@@ -9,7 +9,7 @@ const {useDatabase} = require("../init/database");
 const {useCache} = require("../init/cache");
 
 const utilMailSender = require("../utils/mail_sender");
-const utilSaraToken = require("../utils/sara_token");
+const utilSigmaToken = require("../utils/sigma_token");
 const utilCodeSession = require("../utils/code_session");
 const utilVisitor = require("../utils/visitor");
 const utilUser = require("../utils/user");
@@ -49,7 +49,7 @@ router.post("/",
         try {
             await utilMailSender("register", {
                 to: req.body.email,
-                website: getMust("SARA_AUDIENCE_URL"),
+                website: getMust("SIGMA_AUDIENCE_URL"),
                 ip_address: utilVisitor.getIPAddress(req),
                 code,
             });
@@ -112,11 +112,11 @@ router.post("/verify",
         const userData = await utilUser.saveData(user);
 
         // Generate token
-        const token = utilSaraToken.issue(userData);
+        const token = utilSigmaToken.issue(userData);
 
         // Send response
         res.
-            header("Sara-Issue", token).
+            header("Sigma-Issue", token).
             sendStatus(StatusCodes.CREATED);
     },
 );

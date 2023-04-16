@@ -18,8 +18,8 @@ function generateFakeUser() {
     const sessionCode = `testing_${generateNanoId()}`;
 
     return {
-        nickname: `Sara Hoshikawa - ${sessionCode}`,
-        email: `sara_${sessionCode}@web-tech-tw.github.io`,
+        nickname: `Sigma Hoshikawa - ${sessionCode}`,
+        email: `sigma_${sessionCode}@test.sigma`,
     };
 }
 

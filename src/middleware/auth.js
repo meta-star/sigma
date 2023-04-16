@@ -10,12 +10,12 @@ const {isProduction} = require("../config");
 // Import isObjectPropExists
 const {isObjectPropExists} = require("../utils/native");
 
-const saraTokenAuth = require("../utils/sara_token");
+const sigmaTokenAuth = require("../utils/sigma_token");
 const testTokenAuth = require("../utils/test_token");
 
 // Import authMethods
 const authMethods = {
-    "SARA": saraTokenAuth.validate,
+    "SIGMA": sigmaTokenAuth.validate,
     "TEST": testTokenAuth.validate,
 };
 

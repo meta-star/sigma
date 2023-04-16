@@ -1,7 +1,7 @@
 "use strict";
 // Check the role for the request required,
 // and interrupt if the requirement is not satisfied.
-// (for Sara only)
+// (for Sigma only)
 
 // Import isProduction
 const {isProduction} = require("../config");
@@ -30,9 +30,9 @@ module.exports = (role) => (req, res, next) => {
         return;
     }
 
-    // Accept SARA or TEST only
+    // Accept SIGMA or TEST only
     if (
-        req.auth.method !== "SARA" &&
+        req.auth.method !== "SIGMA" &&
         !(req.auth.method === "TEST" && !isProduction())
     ) {
         res.sendStatus(StatusCodes.METHOD_NOT_ALLOWED);

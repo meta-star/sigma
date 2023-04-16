@@ -1,5 +1,5 @@
 "use strict";
-// Token utils of Sara.
+// Token utils of Sigma.
 
 // Import config
 const {get, getMust} = require("../config");
@@ -25,12 +25,12 @@ const issueOptions = {
     algorithm: "HS256",
     expiresIn: "1d",
     notBefore: "500ms",
-    audience: getMust("SARA_AUDIENCE_URL"),
-    issuer: get("SARA_ISSUER") || sha256hex(secret),
+    audience: getMust("SIGMA_AUDIENCE_URL"),
+    issuer: get("SIGMA_ISSUER") || sha256hex(secret),
     noTimestamp: false,
     mutatePayload: false,
     header: {
-        sara: {
+        sigma: {
             version: 2,
             type: "auth",
         },
@@ -40,8 +40,8 @@ const issueOptions = {
 // Define validateOptions
 const validateOptions = {
     algorithms: ["HS256"],
-    issuer: get("SARA_ISSUER") || sha256hex(secret),
-    audience: getMust("SARA_AUDIENCE_URL"),
+    issuer: get("SIGMA_ISSUER") || sha256hex(secret),
+    audience: getMust("SIGMA_AUDIENCE_URL"),
     complete: true,
 };
 
@@ -57,7 +57,7 @@ function issue(user) {
 
 /**
  * Validate token
- * @module sara_token
+ * @module sigma_token
  * @function
  * @param {string} token - The token to valid.
  * @return {object}
@@ -73,10 +73,10 @@ function validate(token) {
         const {header, payload} = verify(token, secret, validateOptions);
 
         if (
-            header?.sara?.version !== 2 ||
-            header?.sara?.type !== "auth"
+            header?.sigma?.version !== 2 ||
+            header?.sigma?.type !== "auth"
         ) {
-            throw new Error("invalid sara token type");
+            throw new Error("invalid sigma token type");
         }
 
         result.userId = payload.sub;

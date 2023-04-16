@@ -1,5 +1,5 @@
 "use strict";
-// Mail Sender of Sara
+// Mail Sender of Sigma
 
 const {getMust, getEnabled} = require("../config");
 

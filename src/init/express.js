@@ -28,7 +28,7 @@ if (getEnabled("ENABLED_CORS")) {
     const cors = require("cors");
     app.use(cors({
         origin: getMust("CORS_ORIGIN"),
-        exposedHeaders: ["Sara-Issue"],
+        exposedHeaders: ["Sigma-Issue"],
     }));
     if (getEnabled("ENABLED_CORS_ORIGIN_CHECK")) {
         // Check header "Origin"

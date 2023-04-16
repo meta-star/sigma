@@ -51,7 +51,7 @@ describe("/register", function() {
             .type("form")
             .expect(StatusCodes.CREATED)
             .then((res) => {
-                utils.log("sara-issue", res.headers["sara-issue"]);
+                utils.log("sigma-issue", res.headers["sigma-issue"]);
                 done();
             })
             .catch((e) => {
